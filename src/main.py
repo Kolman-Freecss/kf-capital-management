@@ -99,7 +99,30 @@ class MainApp(App):
 
         mother_box.add_widget(grid_layout)
 
+        # Navbar Mother Box
+        navbar_mother_box = BoxLayout(orientation='vertical', size_hint=(0.8, 0.1), pos_hint={'center_x': 0.5, 'center_y': 0.9}, padding=10)
+        with navbar_mother_box.canvas.before:
+            Color(1, 1, 1, 1)  # White color
+            navbar_mother_box.rect = Rectangle(size=navbar_mother_box.size, pos=navbar_mother_box.pos)
+        def _update_rect_navbar(instance, value):
+            instance.rect.pos = instance.pos
+            instance.rect.size = instance.size
+
+        navbar_mother_box.bind(size=_update_rect_navbar, pos=_update_rect_navbar)
+
+        # Navbar
+        navbar = BoxLayout(orientation='horizontal', size_hint=(1, 1))
+        menu_label = Label(text='☰', size_hint=(0.2, 1), color=(0, 0, 0, 1))
+        home_label = Label(text='Home', size_hint=(0.6, 1), color=(0, 0, 0, 1))
+        wallet_label = Label(text='Wallet Now', size_hint=(0.2, 1), color=(0, 0, 0, 1))
+        navbar.add_widget(menu_label)
+        navbar.add_widget(home_label)
+        navbar.add_widget(wallet_label)
+
+        navbar_mother_box.add_widget(navbar)
+
         root = BoxLayout(orientation='vertical')
+        root.add_widget(navbar_mother_box)
         root.add_widget(mother_box)
         return root
 
