@@ -15,7 +15,8 @@ A desktop application built with Python and Kivy for capital management.
 <details>
     <summary>Requirements</summary>
 <br>
-    - **To package the application using Buildozer, you need to be on a Linux system (preferably Ubuntu). You will also need to install the following packages:**
+
+  - **To package the application using Buildozer, you need to be on a Linux system (preferably Ubuntu). You will also need to install the following packages:**
 
 ```bash
 # Optional WSL package
@@ -32,7 +33,8 @@ sudo apt install -y git zip unzip openjdk-8-jdk python3-pip autoconf libtool pkg
 <details>
   <summary>Setup</summary>
 <br>
-  -   **Install Android SDK and NDK:** To package the application for Android, you need to have the Android SDK and NDK installed.
+
+  - **Install Android SDK and NDK:** To package the application for Android, you need to have the Android SDK and NDK installed.
     You also need to configure the `ANDROID_HOME` and `ANDROID_NDK_HOME` environment variables.
     -   `ANDROID_HOME`: Path to your Android SDK installation.
     -   `ANDROID_NDK_HOME`: Path to your Android NDK installation.
@@ -58,7 +60,8 @@ python src/main.py
 <details>
   <summary>Package</summary>
 <br>
-  -   **To package the application for desktop (Windows), you can use the following command:**
+
+  - **To package the application for desktop (Windows), you can use the following command:**
 
 ```bash
 buildozer distclean
