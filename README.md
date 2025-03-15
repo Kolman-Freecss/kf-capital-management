@@ -2,23 +2,56 @@
 
 A desktop application built with Python and Kivy for capital management.
 
-## Setup
+## Table of Contents
 
-1.  Create and activate virtual environment:
+- [KF Capital Management](#kf-capital-management)
+  - [Table of Contents](#table-of-contents)
+  - [Getting Started](#getting-started)
+  - [Project Structure](#project-structure)
+  - [License](#license)
+
+## Getting Started
+
+<details>
+  <summary>Setup</summary>
+<br>
+
+  -   **Create and activate virtual environment:**
     \`
     python -m venv venv
     .\\venv\\Scripts\\activate
     \`
 
-2.  Install dependencies:
+  -   **Install dependencies:**
     \`
     pip install -r requirements.txt
     \`
 
-3.  Run the application:
+  -   **Run the application:**
     \`
     python src/main.py
     \`
+
+</details>
+
+<details>
+  <summary>Package</summary>
+<br>
+
+- **To package the application for desktop (Windows), you can use the following command:**
+
+```bash
+buildozer distclean
+buildozer -v windows debug
+```
+
+-   **To package the application for Android, you need to have the Android SDK and NDK installed. Then, you can use the following command:**
+
+```bash
+buildozer android debug
+```
+
+</details>
 
 ## Project Structure
 
