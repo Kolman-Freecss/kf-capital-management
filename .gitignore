@@ -1,34 +1,30 @@
-# Python
+# Compiled Python files
+*.pyc
+*.pyo
 __pycache__/
-*.py[cod]
-*.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
 
-# Virtual Environment
+# Virtual environment
 venv/
-ENV/
+.venv/
 
+# Buildozer files
+.buildozer/
+bin/
+dists/
+*.apk
+*.aab
+
+# Kivy specific
+*.egg-info/
+*.kv
+*.so
+
+# OS generated files #
+######################
+.DS_Store
+Thumbs.db
 # IDE
 .idea/
 .vscode/
 *.swp
 *.swo
-
-# Kivy
-*.kv
