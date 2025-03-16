@@ -32,3 +32,8 @@ Thumbs.db
 SDL2*
 jni
 obj
+
+## Buildozer
+.buildozer
+android-ndk.zip
+buildozer.spec
