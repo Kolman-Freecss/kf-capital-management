@@ -6,54 +6,131 @@ A desktop application built with Python and Kivy for capital management.
 
 - [KF Capital Management](#kf-capital-management)
   - [Table of Contents](#table-of-contents)
+  - [Tech Stack](#tech-stack)
   - [Getting Started](#getting-started)
+  - [Windows Setup](#windows-setup)
   - [Project Structure](#project-structure)
   - [License](#license)
+
+## Tech Stack
+
+- Python
+- Kivy (Package manager for Android)
+- PyInstaller
 
 ## Getting Started
 
 <details>
-    <summary>Requirements</summary>
+    <summary>Setup</summary>
 <br>
 
-  - **To package the application using Buildozer, you need to be on a Linux system (preferably Ubuntu). You will also need to install the following packages:**
+## Windows Setup
+
+  - **Simple execution in local**
 
 ```bash
-# Optional WSL package
-wsl --install
-# ----
+# Install dependencies
 
-sudo apt update
-sudo apt install -y git zip unzip openjdk-8-jdk python3-pip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake ant
-
-```
-
-</details>
-
-<details>
-  <summary>Setup</summary>
-<br>
-
-  - **Install Android SDK and NDK:** To package the application for Android, you need to have the Android SDK and NDK installed.
-    You also need to configure the `ANDROID_HOME` and `ANDROID_NDK_HOME` environment variables.
-    -   `ANDROID_HOME`: Path to your Android SDK installation.
-    -   `ANDROID_NDK_HOME`: Path to your Android NDK installation.
-
-  - **Create and activate virtual environment:**
-```bash
-python -m venv venv
-.\\venv\\Scripts\\activate
-```
-
-  -   **Install dependencies:**
-```bash
 pip install -r requirements.txt
 ```
 
-  -   **Run the application:**
+  - **To package the application using p4a (Android), you need to be on a Linux system (preferably Ubuntu) or PyInstaller (Windows). You will  need to install the following packages:**
+
+/##########################<br>
+/##    Android Packages  ##<br>
+/##########################<br>
+
 ```bash
-python src/main.py
+# Optional WSL package if you're on Windows and you're trying to package for Android
+wsl --install
+wsl.exe -d Ubuntu
+# Inside wsl
+sudo apt update
+sudo apt upgrade
+sudo apt install python3 python3-pip
+python3 --version
+pip3 --version
+
+# Create and activate virtual environment
+cd ~
+python3 -m venv venv
+source venv/bin/activate
+pip install python-for-android
+# ----
 ```
+
+```bash
+# Using venv of python from WSL
+# Ref: https://python-for-android.readthedocs.io/en/latest/quickstart.html#installation
+
+# (Don't follow these steps if you've env built from wsl) Common issue: We've to convert activate script to unix format
+sudo apt install dos2unix
+sudo dos2unix venv/Scripts/activate
+# ----
+
+source venv/bin/activate
+pip install python-for-android
+
+# Install Prerequisites (Follow above REF)
+# Now Install Android SDK with NDK
+# Check latest SDK https://developer.android.com/studio?hl=es-419
+# Use: https://dl.google.com/android/repository/<Replace with the latest you found in the link above>
+# Install SDK
+wget wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip -O commandlinetools-linux.zip
+mkdir -p $HOME/android-sdk/cmdline-tools
+unzip commandlinetools-linux.zip -d $HOME/android-sdk/cmdline-tools
+mv $HOME/android-sdk/cmdline-tools/cmdline-tools $HOME/android-sdk/cmdline-tools/latest
+# Export variables
+# Edit nano ~/.bashrc and add the lines at bottom of file
+nano ~/.bashrc
+# Add the lines
+export ANDROID_HOME=$HOME/android-sdk
+export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
+export PATH=$ANDROID_HOME/platform-tools:$PATH
+# Reloading environment
+source ~/.bashrc
+
+# Install NDK (Same as above)
+wget https://dl.google.com/android/repository/android-ndk-r28-linux.zip -O android-ndk.zip
+mkdir -p $HOME/android-sdk/ndk
+unzip android-ndk.zip -d $HOME/android-sdk/ndk
+# Edit nano ~/.bashrc and add the lines at bottom of file
+nano ~/.bashrc
+# Add the lines
+export ANDROID_NDK_HOME=$HOME/android-sdk/ndk/android-ndk-r28
+export PATH=$ANDROID_NDK_HOME:$PATH
+# Reloading environment
+source ~/.bashrc
+# Check
+ndk-build --version
+
+# Install platform API and build-tools
+sdkmanager "platforms;android-27"
+sdkmanager "build-tools;28.0.2"
+
+# Edit nano ~/.bashrc and add the lines at bottom of file
+
+# Adjust the paths based on your installation
+export ANDROIDSDK="$HOME/android-sdk"
+export ANDROIDNDK="$HOME/android-sdk/ndk/android-ndk-r28"
+export ANDROIDAPI="27"  # Target API version of your application
+export NDKAPI="21"  # Minimum supported API version of your application
+export ANDROIDNDKVER="r28"  # Version of the NDK you installed
+
+# Reloading environment
+source ~/.bashrc
+
+
+# (Optional) Example packaging
+p4a apk --private /mnt/d/Data/ProjectsData/Programming/Projects/AI/kf-capital-management --package=org.example.myapp --name "My application" --version 0.1 --bootstrap=sdl2 --requirements=python3,kivy --arch armeabi-v7a
+``` 
+
+
+/##########################<br>
+/##    Windows Packages  ##<br>
+/##########################<br>
+
+
 
 </details>
 
@@ -64,18 +141,25 @@ python src/main.py
   - **To package the application for desktop (Windows), you can use the following command:**
 
 ```bash
-buildozer distclean
-buildozer -v windows debug
 ```
 
   -   **To package the application for Android, you need to have the Android SDK and NDK installed. Then, you can use the following command:**
 
+With p4a (https://python-for-android.readthedocs.io/en/latest/quickstart.html#build-a-kivy-or-sdl2-application)
+
 ```bash
-buildozer android debug
+wsl p4a apk --private /mnt/d/Data/ProjectsData/Programming/Projects/AI/kf-capital-management --package=org.example.myapp --name "My application" --version 0.1 --bootstrap=sdl2 --requirements=python3,kivy --arch armeabi-v7a
+```
 
-# WSL way
-wsl bash -c "buildozer android debug"
+</details>
 
+<details>
+  <summary>Execute</summary>
+<br>
+
+  -   **Run the application:**
+```bash
+python src/main.py
 ```
 
 </details>
