@@ -50,6 +50,9 @@ sudo apt upgrade
 sudo apt install python3 python3-pip
 python3 --version
 pip3 --version
+pip install cython
+pip show cython
+# pip install matplotlib
 
 # Create and activate virtual environment
 cd ~
@@ -105,7 +108,7 @@ source ~/.bashrc
 ndk-build --version
 
 # Install platform API and build-tools
-sdkmanager "platforms;android-27"
+sdkmanager "platforms;android-34"
 sdkmanager "build-tools;28.0.2"
 
 # Edit nano ~/.bashrc and add the lines at bottom of file
@@ -113,7 +116,7 @@ sdkmanager "build-tools;28.0.2"
 # Adjust the paths based on your installation
 export ANDROIDSDK="$HOME/android-sdk"
 export ANDROIDNDK="$HOME/android-sdk/ndk/android-ndk-r28"
-export ANDROIDAPI="27"  # Target API version of your application
+export ANDROIDAPI="34"  # Target API version of your application
 export NDKAPI="21"  # Minimum supported API version of your application
 export ANDROIDNDKVER="r28"  # Version of the NDK you installed
 
@@ -122,7 +125,7 @@ source ~/.bashrc
 
 
 # (Optional) Example packaging
-p4a apk --private /mnt/d/Data/ProjectsData/Programming/Projects/AI/kf-capital-management --package=org.example.myapp --name "My application" --version 0.1 --bootstrap=sdl2 --requirements=python3,kivy --arch armeabi-v7a
+p4a apk --private /mnt/d/Data/ProjectsData/Programming/Projects/AI/kf-capital-management --package=org.example.myapp --name "My application" --version 0.1 --bootstrap=sdl2 --requirements=python3,kivy --arch arm64-v8a --use-setup-py
 ``` 
 
 
@@ -148,7 +151,7 @@ p4a apk --private /mnt/d/Data/ProjectsData/Programming/Projects/AI/kf-capital-ma
 With p4a (https://python-for-android.readthedocs.io/en/latest/quickstart.html#build-a-kivy-or-sdl2-application)
 
 ```bash
-wsl p4a apk --private /mnt/d/Data/ProjectsData/Programming/Projects/AI/kf-capital-management --package=org.example.myapp --name "My application" --version 0.1 --bootstrap=sdl2 --requirements=python3,kivy --arch armeabi-v7a
+p4a apk --private /mnt/d/Data/ProjectsData/Programming/Projects/AI/kf-capital-management --package=org.example.myapp --name "My application" --version 0.1 --bootstrap=sdl2 --requirements=python3,kivy --arch arm64-v8a --use-setup-py
 ```
 
 </details>

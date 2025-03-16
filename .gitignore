@@ -27,3 +27,8 @@ Thumbs.db
 .vscode/
 *.swp
 *.swo
+
+# Package files
+SDL2*
+jni
+obj
