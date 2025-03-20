@@ -54,6 +54,36 @@ flutter run
 -   `android/`: Android-specific code
 -   `ios/`: iOS-specific code
 
+## Running and Building the App
+
+### Android
+
+To run the app on Android:
+
+```bash
+flutter run -d android
+```
+
+To build the app for Android:
+
+```bash
+flutter build apk
+```
+
+### Windows
+
+To run the app on Windows:
+
+```bash
+flutter run -d windows
+```
+
+To build the app for Windows:
+
+```bash
+flutter build windows
+```
+
 ## License
 
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
