@@ -1,39 +1,56 @@
-# Compiled Python files
-*.pyc
-*.pyo
-__pycache__/
+# Android Studio / IntelliJ IDEA
+*.iml
+.gradle/
+/build
+.idea/
 
-# Virtual environment
-venv/
-.venv/
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
-# Packaging files
-bin/
-dists/
-*.apk
-*.aab
+# Dart/Flutter
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+pubspec.lock
 
-# Kivy specific
-*.egg-info/
-*.kv
-*.so
-
-# OS generated files #
-######################
+# OS generated files
 .DS_Store
 Thumbs.db
-# IDE
-.idea/
-.vscode/
-*.swp
-*.swo
 
-# Package files
-SDL2*
-jni
-obj
+# Crash reports
+crash_reports/
 
-## Buildozer
-.buildozer
-android-ndk.zip
-buildozer.spec
+# Compiled artifacts
+*.apk
+*.ipa
+*.jar
+*.dex
+*.aar
+*.so
+*.dylib
+
+# Log files
+*.log
+
+# Temporary files
+**/*.tmp
+
+# Editor backups
+*~
+*/#*#
+
+# Miscellaneous
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.pub-cache/
+.pub/
+/android/app/debug
+/android/app/profile
+/android/app/release
+app.*.symbols
+app.*.map.json
